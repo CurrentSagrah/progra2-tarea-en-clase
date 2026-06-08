@@ -1,9 +1,10 @@
 package com.torres;
 
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+import java.util.Random; 
+*/
 import java.util.Scanner;
 
 /*
@@ -14,62 +15,64 @@ Fecha: 13-05-2026
 
 public class Main {
     public static void main(String[] args) {
-        
 
-        
-
-Object[][] matriz = {
-            {7,  23, 21,  4,  5},
-            {22, 3,  15,  2, 10},
-            {19, 6,  18,  9, 17},
-            {11, 16, 8, 25, "X"},
-            {12, 13, 14, 24, 1}
-        };
+        String[][] bingo;
+        bingo = new String[5][];
 
         Scanner sc = new Scanner(System.in);
+        int min = 3;
+        int max = 5;
 
+        for (int i = 0; i < bingo.length; i++) {
+            int randomNum = (int)(Math.random() * (max - min +1)) + min;
+            bingo[i] = new String[randomNum];
+            for (int j = 0; j < bingo[i].length; j++) {
+                int aux = (int) (Math.random() * 100);
+                bingo[i][j] = String.valueOf(aux);
 
-        System.out.println("Welcome to Bingo!\n");
-        System.out.println("Player 1 - Drawn Number: 20\n");
-        System.out.println("Player 1's Card:");
-        imprimirMatriz(matriz);
-
-
-        while (true) {
-            System.out.print("\nIngrese fila (0-4) o -1 para salir: ");
-            int fila = sc.nextInt();
-
-            if (fila == -1) {
-                break;
             }
-
-            System.out.print("Ingrese columna (0-4): ");
-            int columna = sc.nextInt();
-
-            matriz[fila][columna] = "X";
-
-            System.out.println("\nPlayer 1's Card:");
-            imprimirMatriz(matriz);
         }
 
-        System.out.println("Juego terminado.");
-    }
 
-    static void imprimirMatriz(Object[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j] + "\t");
+        for (int i = 0; i < bingo.length; i++) {
+
+            for (int j = 0; j < bingo[i].length; j++) {
+                System.out.print(bingo[i][j] + "\t");
             }
+
             System.out.println();
         }
-        System.out.println("---------------------------");
 
+      
+            System.out.println("Ingrese número: ");
+            String numero = sc.nextLine();
+            for (int i = 0; i < bingo.length; i++) {
+
+            for (int j = 0; j < bingo[i].length; j++) {
+                if (bingo[i][j] == numero) {
+                    bingo[i][j] = "x";
+                } else {
+                    System.out.println("no hay ese numero");
+                }
+            }
+
+            System.out.println();
+        }
+
+
+            for (int i = 0; i < bingo.length; i++) {
+
+            for (int j = 0; j < bingo[i].length; j++) {
+                System.out.print(bingo[i][j] + "\t");
+            }
+
+            System.out.println();
+        
 
         
 
-
-
-
     
+    }
+
     }
 }
